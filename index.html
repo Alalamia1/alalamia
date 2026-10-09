@@ -1,6 +1,35 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+  /* حركة أيقونة الواتساب */
+.float-wa::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:var(--wa);
+  z-index:-1;
+  animation:waPulse 2s ease-out infinite;
+}
+.float-wa svg{
+  animation:waShake 4s ease-in-out infinite;
+  transform-origin:50% 60%;
+}
+@keyframes waPulse{
+  0%{transform:scale(1);opacity:.55}
+  100%{transform:scale(1.8);opacity:0}
+}
+@keyframes waShake{
+  0%,70%,100%{transform:rotate(0)}
+  75%{transform:rotate(-14deg)}
+  80%{transform:rotate(12deg)}
+  85%{transform:rotate(-10deg)}
+  90%{transform:rotate(6deg)}
+  95%{transform:rotate(0)}
+}
+@media (prefers-reduced-motion:reduce){
+  .float-wa::before,.float-wa svg{animation:none}
+}
   <!-- Snap Pixel Code -->
 <script type='text/javascript'>
 (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
